@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+:root {
+    /* The core FC 26 Colors */
+    --fc-dark: #02060d;
+    --fc-card-bg: #0b111a;   /* Added this so your cards appear */
+    --fc-volt: #e2ff00;
+    --fc-white: #ffffff;     /* Added this so your text appears */
+    
+    /* The Typography variables you found */
+    --b1-lg-text-size: 4.5rem; 
+    --b1-lg-font-weight: 800;
+    --ea-font: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--fc-dark);
+    color: var(--fc-white);
+    font-family: var(--ea-font);
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+/* Header / Hero Section */
+.hero {
+    padding: 80px 40px 40px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: var(--b1-lg-text-size);
+    font-weight: var(--b1-lg-font-weight);
+    font-style: italic;
+    margin: 0;
+    letter-spacing: -2px;
+    line-height: 0.85;
+    /* This makes the text look like the glowing EA branding */
+    text-shadow: 0 0 20px rgba(226, 255, 0, 0.2); 
+}
+
+#add-player-btn {
+    background: var(--fc-volt);
+    color: black;
+    font-weight: 800;
+    border: none;
+    padding: 15px 40px;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    cursor: pointer;
+    font-family: var(--ea-font);
+}
+
+/* The Stats Bar below the header */
+.stats-bar {
+    display: flex;
+    margin: 0 40px 40px 40px;
+    border-top: 1px solid #1a222d;
+    padding-top: 20px;
+}
+
+.stat-box {
+    margin-right: 50px;
+}
+
+.stat-box .label { font-size: 0.7rem; color: #6e7a8a; }
+.stat-box .value { font-size: 2rem; display: block; font-weight: 800; }
+
+/* The Player Grid */
+#roster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    padding: 0 40px 40px 40px;
+}
+
+.player-card {
+    background: var(--fc-card-bg);
+    padding: 30px;
+    border-bottom: 5px solid var(--fc-volt);
+    transition: all 0.3s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-10px);
+    background: #141c27;
+}
+
+.card-rating {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--fc-volt);
+    line-height: 1;
+}
+
+.card-name {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: 700;
+}
