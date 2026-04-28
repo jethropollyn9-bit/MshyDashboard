@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
 :root {
-    /* The core FC 26 Colors */
-    --fc-dark: #02060d;
-    --fc-card-bg: #0b111a;   /* Added this so your cards appear */
-    --fc-volt: #e2ff00;
-    --fc-white: #ffffff;     /* Added this so your text appears */
+    --fc-dark: #151616;
+    --fc-card-bg: #151616;
+    --fc-white: #ffffff;
     
-    /* The Typography variables you found */
+    
+    --fc-volt: #40F067;  
+    
     --b1-lg-text-size: 4.5rem; 
     --b1-lg-font-weight: 800;
     --ea-font: 'Inter', sans-serif;
@@ -47,8 +47,8 @@ h1 {
     font-weight: 800;
     border: none;
     padding: 15px 40px;
-    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     cursor: pointer;
+    border-radius: 999px;
     font-family: var(--ea-font);
 }
 
@@ -98,4 +98,65 @@ h1 {
     font-size: 1.5rem;
     margin-top: 10px;
     font-weight: 700;
+}
+/* --- SIGNING ROOM STYLES --- */
+#signing-room {
+    background: #0b111a;
+    margin: 0 40px 20px 40px;
+    padding: 20px;
+    border: 1px solid #1a222d;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input, select {
+    background: #1a222d;
+    border: 1px solid #333;
+    color: white;
+    padding: 10px;
+    font-family: var(--ea-font);
+    text-transform: uppercase;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--fc-volt);
+}
+
+#confirm-signing {
+    background: var(--fc-volt);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: var(--ea-font);
+    border-radius: 50px;
+    transition: transform 0.2s;
+}
+
+#confirm-signing:hover {
+    transform: scale(1.05);
+}
+
+#roster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.player-card {
+    background: linear-gradient(135deg, #1a222d 0%, #02060d 100%);
+    border-left: 4px solid var(--fc-volt);
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+    border-left: 4px solid #ffffff; /* Glows white on hover like the game */
 }
