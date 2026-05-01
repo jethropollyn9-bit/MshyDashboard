@@ -1,5 +1,7 @@
-// 1. Your Roster Data
-const players = [
+// 1. Roster Data
+// --- NEW: CHECK MEMORY FIRST ---
+// Melt the saved text back into an array, OR use the default players if it's empty
+let players = JSON.parse(localStorage.getItem('mySquad')) || [
     { name: "Jethro", rating: 85, position: "ST" },
     { name: "Mshy", rating: 82, position: "CAM" }
 ];
@@ -25,30 +27,46 @@ function displayPlayers() {
     
     // Update the Squad Size number automatically
     document.getElementById('player-count').innerText = players.length;
+    
+    let totalRating = 0; // 1. Create an empty bucket
+
+    players.forEach(player => {
+        // 2. Turn the text into a real number, then throw it in the bucket
+        totalRating += Number(player.rating); 
+    });
+
+    // 3. Divide by the total players and round it to a whole number
+    let averageOvr = Math.round(totalRating / players.length);
+
+    // 4. Push that final number to the OVR box on the screen
+    document.getElementById('team-avg').innerText = averageOvr;
 }
 
-// 4. Make the "Confirm Signing" button actually work
-signBtn.addEventListener('click', () => {
-    const nameInput = document.getElementById('new-player-name').value;
-    const ratingInput = document.getElementById('new-player-rating').value;
-    const posInput = document.getElementById('new-player-pos').value;
+// 4. Makinhg the Confirm Signing button work
+document.getElementById('confirm-signing').addEventListener('click', () => {
+    let nameInput = document.getElementById('new-player-name').value;
+    let ratingInput = document.getElementById('new-player-rating').value;
+    let posInput = document.getElementById('new-player-pos').value;
 
     if (nameInput && ratingInput) {
-        // Add the new player to the list
+        // 1. Push the player exactly ONCE
         players.push({
             name: nameInput,
             rating: ratingInput,
             position: posInput
         });
 
-        // Clear the typing boxes
+        // 2. Save to memory ONCE
+        localStorage.setItem('mySquad', JSON.stringify(players));
+
+        // 3. Clear the input boxes
         document.getElementById('new-player-name').value = "";
         document.getElementById('new-player-rating').value = "";
 
-        // Redraw the screen to show the new player
+        // 4. Update the screen
         displayPlayers();
     }
 });
 
-// 5. Run the draw function as soon as the page opens
+// 5. Run the draw function once the page opens
 displayPlayers();
