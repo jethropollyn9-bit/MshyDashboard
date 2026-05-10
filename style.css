@@ -24,9 +24,27 @@ body {
 
 /* Header / Hero Section */
 .hero {
-    padding: 80px 40px 40px 40px;
+    padding: 20px 48px 40px 48px; 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+/* --- THE OFFICIAL LOGO --- */
+.official-logo {
+    height: 36px; 
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 10px rgba(226, 255, 0, 0.4)); 
+    align-items: center;
+}
+
+.mode {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0px;
+    font-style: italic;
     align-items: center;
 }
 
@@ -35,9 +53,8 @@ h1 {
     font-weight: var(--b1-lg-font-weight);
     font-style: italic;
     margin: 0;
-    letter-spacing: -2px;
+    letter-spacing: 0px;
     line-height: 0.85;
-    /* This makes the text look like the glowing EA branding */
     text-shadow: 0 0 20px rgba(226, 255, 0, 0.2); 
 }
 
@@ -159,7 +176,7 @@ input:focus {
 
 .player-card:hover {
     transform: translateY(-5px);
-    border-left: 4px solid #ffffff; /* Glows white on hover like the game */
+    border-left: 4px solid #ffffff;
 }
 
 /* --- SACK PLAYER BUTTON --- */
@@ -167,10 +184,10 @@ input:focus {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: #ff3333; /* Bright warning red */
+    background-color: #ff3333; 
     color: white;
     border: none;
-    border-radius: 50%; /* Makes it a perfect circle */
+    border-radius: 50%; 
     width: 30px;
     height: 30px;
     font-size: 1rem;
@@ -211,4 +228,15 @@ input:focus {
         width: 100%;
         margin-bottom: 10px;
     }
+}
+
+/* --- TOP NAVIGATION BAR --- */
+.top-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+    text-align: center;
+    gap: 5px; 
+    padding: 10px 0; 
 }
