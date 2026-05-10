@@ -1,5 +1,4 @@
-// 1. Roster Data
-// --- NEW: CHECK MEMORY FIRST ---
+// 1. Roster Data - Check Memory First
 // Melt the saved text back into an array, OR use the default players if it's empty
 let players = JSON.parse(localStorage.getItem('mySquad')) || [
     { name: "Jethro", rating: 85, position: "ST" },
@@ -14,10 +13,14 @@ const signBtn = document.getElementById('confirm-signing');
 function displayPlayers() {
     rosterGrid.innerHTML = ""; 
     
-    players.forEach(player => {
+    // We pass 'index' into the main loop here to track which player to sack
+    players.forEach((player, index) => {
         const card = document.createElement('div');
         card.className = 'player-card';
+        
+        // We added the sack button directly to the top of the card HTML
         card.innerHTML = `
+            <button class="sack-btn" onclick="deletePlayer(${index})">X</button>
             <div style="font-size: 3.5rem; font-weight: 800; color: var(--fc-volt); line-height: 1;">${player.rating}</div>
             <div style="font-size: 1.5rem; margin-top: 10px; font-weight: 700;">${player.name}</div>
             <div style="color: #6e7a8a; font-size: 1rem; margin-top: 5px;">${player.position}</div>
@@ -28,21 +31,23 @@ function displayPlayers() {
     // Update the Squad Size number automatically
     document.getElementById('player-count').innerText = players.length;
     
-    let totalRating = 0; // 1. Create an empty bucket
+    let totalRating = 0; 
 
     players.forEach(player => {
-        // 2. Turn the text into a real number, then throw it in the bucket
         totalRating += Number(player.rating); 
     });
 
-    // 3. Divide by the total players and round it to a whole number
-    let averageOvr = Math.round(totalRating / players.length);
+    // Safety check: Only do the math if there are actually players in the squad!
+    let averageOvr = 0;
+    if (players.length > 0) {
+        averageOvr = Math.round(totalRating / players.length);
+    }
 
-    // 4. Push that final number to the OVR box on the screen
+    // Push that final number to the OVR box on the screen
     document.getElementById('team-avg').innerText = averageOvr;
 }
 
-// 4. Makinhg the Confirm Signing button work
+// 4. Making the Confirm Signing button work
 document.getElementById('confirm-signing').addEventListener('click', () => {
     let nameInput = document.getElementById('new-player-name').value;
     let ratingInput = document.getElementById('new-player-rating').value;
@@ -70,3 +75,15 @@ document.getElementById('confirm-signing').addEventListener('click', () => {
 
 // 5. Run the draw function once the page opens
 displayPlayers();
+
+// 6. --- NEW: SACK PLAYER FUNCTION ---
+function deletePlayer(index) {
+    // 1. Remove exactly 1 player at that specific index
+    players.splice(index, 1);
+
+    // 2. Save the newly updated squad back to the browser's memory
+    localStorage.setItem('mySquad', JSON.stringify(players));
+
+    // 3. Redraw the screen! (This automatically recalculates the OVR and Player Count)
+    displayPlayers();
+}
