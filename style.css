@@ -29,7 +29,6 @@ body {
     gap: 5px; 
     padding: 10px 0; 
     margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .official-logo {
@@ -53,7 +52,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); 
     margin-bottom: 20px; 
 }
 
@@ -78,7 +78,7 @@ h1 {
     font-family: var(--ea-font);
 }
 
-/* --- Stats Bar (Framed with Top & Bottom Lines) --- */
+/* --- Stats Bar --- */
 .stats-bar {
     display: flex;
     margin: 0 40px 40px 40px;
@@ -91,7 +91,7 @@ h1 {
 
 .stat-box .label { 
     font-size: 1.2rem; 
-    color: #40F067; 
+    color: var(--fc-volt); 
     font-weight: 600;
     letter-spacing: 2px; 
 }
@@ -218,18 +218,47 @@ input:focus {
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
+    /* 1. Fix the Hero Title Spacing */
     .hero {
         flex-direction: column;
         text-align: center;
         gap: 20px; 
-        padding-top: 30px; 
+        padding: 20px; 
     }
 
+    /* 2. Center the Stats Bar */
+    .stats-bar {
+        margin: 0 20px 30px 20px; 
+        justify-content: center;  
+    }
+    
+    .stat-box {
+        margin: 0 15px; 
+    }
+
+    /* 3. Fix the Squished Signing Room Boxes */
+    #signing-room {
+        margin: 0 20px 20px 20px;
+    }
+    
+    .input-group {
+        flex-direction: column; 
+        gap: 15px;
+    }
+    
+    input, select, #confirm-signing {
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box; 
+    }
+
+    /* 4. Single Column Player Grid */
     #roster-grid {
         grid-template-columns: 1fr;
         padding: 20px;
     }
 
+    /* 5. Clean Navigation */
     nav, .top-bar {
         flex-direction: column;
         text-align: center;
@@ -237,11 +266,6 @@ input:focus {
     }
 
     header h1, h1 {
-        font-size: 1.5rem;
-    }
-
-    input, select, #confirm-signing {
-        width: 100%;
-        margin-bottom: 10px;
+        font-size: 2.2rem;
     }
 }
