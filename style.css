@@ -4,10 +4,7 @@
     --fc-dark: #151616;
     --fc-card-bg: #151616;
     --fc-white: #ffffff;
-    
-    
     --fc-volt: #40F067;  
-    
     --b1-lg-text-size: 4.5rem; 
     --b1-lg-font-weight: 800;
     --ea-font: 'Inter', sans-serif;
@@ -22,21 +19,24 @@ body {
     text-transform: uppercase;
 }
 
-/* Header / Hero Section */
-.hero {
-    padding: 20px 48px 40px 48px; 
+/* --- Top Navigation Bar --- */
+.top-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+    text-align: center;
+    gap: 5px; 
+    padding: 10px 0; 
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* --- THE OFFICIAL LOGO --- */
 .official-logo {
     height: 36px; 
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0px 0px 10px rgba(226, 255, 0, 0.4)); 
-    align-items: center;
 }
 
 .mode {
@@ -45,7 +45,16 @@ body {
     color: #ffffff;
     letter-spacing: 0px;
     font-style: italic;
+}
+
+/* --- Header / Hero Section --- */
+.hero {
+    padding: 20px 48px 20px 48px; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 20px; 
 }
 
 h1 {
@@ -69,54 +78,33 @@ h1 {
     font-family: var(--ea-font);
 }
 
-/* The Stats Bar below the header */
+/* --- Stats Bar (Framed with Top & Bottom Lines) --- */
 .stats-bar {
     display: flex;
     margin: 0 40px 40px 40px;
-    border-top: 1px solid #1a222d;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
 .stat-box {
-    margin-right: 50px;
+    margin-right: 60px; 
 }
 
-.stat-box .label { font-size: 0.7rem; color: #6e7a8a; }
-.stat-box .value { font-size: 2rem; display: block; font-weight: 800; }
-
-/* The Player Grid */
-#roster-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 15px;
-    padding: 0 40px 40px 40px;
+.stat-box .label { 
+    font-size: 1.2rem; 
+    color: #40F067; 
+    font-weight: 600;
+    letter-spacing: 2px; 
 }
 
-.player-card {
-    background: var(--fc-card-bg);
-    padding: 30px;
-    border-bottom: 5px solid var(--fc-volt);
-    transition: all 0.3s ease;
+.stat-box .value { 
+    font-size: 2.5rem; 
+    display: block; 
+    font-weight: 800; 
+    line-height: 0.9;
+    letter-spacing: -2px; 
 }
 
-.player-card:hover {
-    transform: translateY(-10px);
-    background: #141c27;
-}
-
-.card-rating {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--fc-volt);
-    line-height: 1;
-}
-
-.card-name {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    font-weight: 700;
-}
-/* --- SIGNING ROOM STYLES --- */
+/* --- Signing Room --- */
 #signing-room {
     background: #0b111a;
     margin: 0 40px 20px 40px;
@@ -159,19 +147,21 @@ input:focus {
     transform: scale(1.05);
 }
 
+/* --- Roster Grid --- */
 #roster-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    padding: 40px;
+    padding: 0 40px 40px 40px;
 }
 
+/* --- Player Cards --- */
 .player-card {
     background: linear-gradient(135deg, #1a222d 0%, #02060d 100%);
     border-left: 4px solid var(--fc-volt);
-    padding: 20px;
-    transition: transform 0.2s;
+    padding: 30px;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .player-card:hover {
@@ -179,7 +169,31 @@ input:focus {
     border-left: 4px solid #ffffff;
 }
 
-/* --- SACK PLAYER BUTTON --- */
+.card-rating {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--fc-volt);
+    line-height: 0.75; 
+    margin-bottom: 10px; 
+    letter-spacing: -2px; 
+}
+
+.card-name {
+    font-size: 1.5rem;
+    margin-top: 0; 
+    font-weight: 700;
+    letter-spacing: 1px; 
+    color: var(--fc-white);
+}
+
+.card-position {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6e7a8a; 
+    margin-top: 2px;
+}
+
+/* --- Sack Player Button --- */
 .sack-btn {
     position: absolute;
     top: -10px;
@@ -197,46 +211,37 @@ input:focus {
     transition: transform 0.2s, background-color 0.2s;
 }
 
-/* Make it pop when you hover over it */
 .sack-btn:hover {
     background-color: #cc0000;
     transform: scale(1.1);
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    /* 1. Stack the player cards into a single column */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px; 
+        padding-top: 30px; 
+    }
+
     #roster-grid {
         grid-template-columns: 1fr;
         padding: 20px;
     }
 
-    /* 2. Stack the top navigation bar so the title isn't crushed */
-    nav {
+    nav, .top-bar {
         flex-direction: column;
         text-align: center;
         gap: 15px;
     }
 
-    /* 3. Make the Title font a bit smaller for phone screens */
-    header h1 {
+    header h1, h1 {
         font-size: 1.5rem;
     }
 
-    /* 4. Make the input boxes full-width so they are easy to tap */
     input, select, #confirm-signing {
         width: 100%;
         margin-bottom: 10px;
     }
-}
-
-/* --- TOP NAVIGATION BAR --- */
-.top-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   
-    justify-content: center;
-    text-align: center;
-    gap: 5px; 
-    padding: 10px 0; 
 }

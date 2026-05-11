@@ -1,8 +1,11 @@
 // 1. Roster Data - Check Memory First
 // Melt the saved text back into an array, OR use the default players if it's empty
 let players = JSON.parse(localStorage.getItem('mySquad')) || [
-    { name: "Jethro", rating: 85, position: "ST" },
-    { name: "Mshy", rating: 82, position: "CAM" }
+    { name: "Jethro", rating: 81, position: "RW" },
+    { name: "Mshy", rating: 90, position: "CAM" },
+    { name: "Spi", rating: 90, position: "ST" },
+    { name: "OBD", rating: 83, position: "CDM" },
+    { name: "AK", rating: 89, position: "LW" }
 ];
 
 // 2. Connect to the HTML

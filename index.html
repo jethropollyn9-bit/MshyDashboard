@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<nav class="top-bar">
-    <img src="https://drop-assets.ea.com/images/52nX0TzEBIprbhnguBrIy3/2214d9c8580b0bd93e69a52d5bbba0be/EAFC26_SEASONAL_SOLID_CHALK_WHITE_HORIZONTAL_RGB.svg" alt="Logo for EA SPORTS FC™ 26" class="official-logo">
-    
-    <div class="mode">CLUB HUB: CHALLENGERS FC</div>
-</nav>
+    <title>Challengers FC Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <nav class="top-bar">
+        <img src="https://drop-assets.ea.com/images/52nX0TzEBIprbhnguBrIy3/2214d9c8580b0bd93e69a52d5bbba0be/EAFC26_SEASONAL_SOLID_CHALK_WHITE_HORIZONTAL_RGB.svg" alt="Logo for EA SPORTS FC™ 26" class="official-logo">
+        <div class="mode">CLUB HUB: CHALLENGERS FC</div>
+    </nav>
 
     <main>
         <header class="hero">
@@ -21,22 +22,34 @@
         <div class="stats-bar">
             <div class="stat-box">
                 <span class="label">OVR</span>
-                <span class="value volt" id="team-avg">81</span>
+                <span class="value volt" id="team-avg">0</span>
             </div>
             <div class="stat-box">
                 <span class="label">SQUAD SIZE</span>
-                <span class="value" id="player-count">3</span>
+                <span class="value" id="player-count">0</span>
             </div>
         </div>
 
         <section id="signing-room">
             <div class="input-group">
-                <input type="text" id="new-player-name" placeholder="PLAYER NAME...">
-                <input type="number" id="new-player-rating" placeholder="OVR" max="99">
-                <select id="new-player-pos">
+                <input type="text" id="player-name" placeholder="PLAYER NAME..." autocomplete="off">
+                <input type="number" id="player-rating" placeholder="OVR" min="1" max="99">
+                <select id="position">
                     <option value="ST">ST</option>
+                    <option value="CF">CF</option>
+                    <option value="LW">LW</option>
+                    <option value="RW">RW</option>
+                    
                     <option value="CAM">CAM</option>
                     <option value="CM">CM</option>
+                    <option value="CDM">CDM</option>
+                    <option value="LM">LM</option>
+                    <option value="RM">RM</option>
+                    
+                    <option value="LWB">LWB</option>
+                    <option value="RWB">RWB</option>
+                    <option value="LB">LB</option>
+                    <option value="RB">RB</option>
                     <option value="CB">CB</option>
                     <option value="GK">GK</option>
                 </select>
