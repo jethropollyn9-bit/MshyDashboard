@@ -218,7 +218,7 @@ input:focus {
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    /* 1. Fix the Hero Title Spacing */
+    /* Header layout adjustments */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -226,7 +226,7 @@ input:focus {
         padding: 20px; 
     }
 
-    /* 2. Center the Stats Bar */
+    /* Stats bar centering */
     .stats-bar {
         margin: 0 20px 30px 20px; 
         justify-content: center;  
@@ -236,7 +236,7 @@ input:focus {
         margin: 0 15px; 
     }
 
-    /* 3. Fix the Squished Signing Room Boxes */
+    /* Form input stacking */
     #signing-room {
         margin: 0 20px 20px 20px;
     }
@@ -252,13 +252,13 @@ input:focus {
         box-sizing: border-box; 
     }
 
-    /* 4. Single Column Player Grid */
+    /* Grid collapse */
     #roster-grid {
         grid-template-columns: 1fr;
         padding: 20px;
     }
 
-    /* 5. Clean Navigation */
+    /* Navigation stacking */
     nav, .top-bar {
         flex-direction: column;
         text-align: center;

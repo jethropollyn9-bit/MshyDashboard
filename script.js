@@ -1,5 +1,4 @@
-// 1. Roster Data - Check Memory First
-// Melt the saved text back into an array, OR use the default players if it's empty
+// Initialize state from localStorage or load default roster payload
 let players = JSON.parse(localStorage.getItem('mySquad')) || [
     { name: "Jethro", rating: 81, position: "RW" },
     { name: "Mshy", rating: 90, position: "CAM" },
@@ -8,20 +7,22 @@ let players = JSON.parse(localStorage.getItem('mySquad')) || [
     { name: "AK", rating: 89, position: "LW" }
 ];
 
-// 2. Connect to the HTML
+// DOM Elements
 const rosterGrid = document.getElementById('roster-grid');
 const signBtn = document.getElementById('confirm-signing');
 
-// 3. The Function that draws the player cards
+/**
+ * Renders the player cards to the DOM and recalculates squad statistics.
+ */
 function displayPlayers() {
+    // Clear existing grid
     rosterGrid.innerHTML = ""; 
     
-    // We pass 'index' into the main loop here to track which player to sack
+    // Map players to DOM elements
     players.forEach((player, index) => {
         const card = document.createElement('div');
         card.className = 'player-card';
         
-        // We added the sack button directly to the top of the card HTML
         card.innerHTML = `
             <button class="sack-btn" onclick="deletePlayer(${index})">X</button>
             <div style="font-size: 3.5rem; font-weight: 800; color: var(--fc-volt); line-height: 1;">${player.rating}</div>
@@ -31,62 +32,63 @@ function displayPlayers() {
         rosterGrid.appendChild(card);
     });
     
-    // Update the Squad Size number automatically
+    // Update squad metrics
     document.getElementById('player-count').innerText = players.length;
     
     let totalRating = 0; 
-
     players.forEach(player => {
         totalRating += Number(player.rating); 
     });
 
-    // Safety check: Only do the math if there are actually players in the squad!
+    // Calculate OVR (prevent division by zero)
     let averageOvr = 0;
     if (players.length > 0) {
         averageOvr = Math.round(totalRating / players.length);
     }
 
-    // Push that final number to the OVR box on the screen
     document.getElementById('team-avg').innerText = averageOvr;
 }
 
-// 4. Making the Confirm Signing button work
+// Event Listener: Add new player to roster
 document.getElementById('confirm-signing').addEventListener('click', () => {
-    let nameInput = document.getElementById('new-player-name').value;
-    let ratingInput = document.getElementById('new-player-rating').value;
-    let posInput = document.getElementById('new-player-pos').value;
+    let nameInput = document.getElementById('player-name').value;
+    let ratingInput = document.getElementById('player-rating').value;
+    let posInput = document.getElementById('player-position').value;
 
     if (nameInput && ratingInput) {
-        // 1. Push the player exactly ONCE
+        // Update state array
         players.push({
             name: nameInput,
             rating: ratingInput,
             position: posInput
         });
 
-        // 2. Save to memory ONCE
+        // Persist to local memory
         localStorage.setItem('mySquad', JSON.stringify(players));
 
-        // 3. Clear the input boxes
-        document.getElementById('new-player-name').value = "";
-        document.getElementById('new-player-rating').value = "";
+        // Reset form inputs
+        document.getElementById('player-name').value = "";
+        document.getElementById('player-rating').value = "";
 
-        // 4. Update the screen
+        // Trigger UI update
         displayPlayers();
     }
 });
 
-// 5. Run the draw function once the page opens
-displayPlayers();
-
-// 6. --- NEW: SACK PLAYER FUNCTION ---
+/**
+ * Removes a player from the roster based on array index.
+ * @param {number} index - The index of the player to remove.
+ */
 function deletePlayer(index) {
-    // 1. Remove exactly 1 player at that specific index
+    // Mutate state array
     players.splice(index, 1);
 
-    // 2. Save the newly updated squad back to the browser's memory
+    // Persist updated state
     localStorage.setItem('mySquad', JSON.stringify(players));
 
-    // 3. Redraw the screen! (This automatically recalculates the OVR and Player Count)
+    // Trigger UI update
     displayPlayers();
 }
+
+// Initial render on mount
+displayPlayers();

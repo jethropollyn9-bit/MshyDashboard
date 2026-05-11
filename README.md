@@ -1,7 +1,6 @@
 # Challengers FC - Squad Management App
 
-**Live Demo:** [Click here to view the live app!]
-file:///Users/jethropollyn/MshyDashboard/index.html
+**Live Demo:** [Click here to view the live app!]https://jethropollyn9-bit.github.io/FCchallengersDashboard/
 
 ## Overview
 Challengers FC is a dynamic, client-side web application built to manage a football club's roster. It features a clean, responsive EA Sports-inspired UI and allows users to dynamically add, manage, and remove players while automatically calculating the overall team rating.
@@ -15,7 +14,7 @@ Challengers FC is a dynamic, client-side web application built to manage a footb
 ## Tech Stack
 * **HTML5:** Semantic structure and form inputs.
 * **CSS3:** Custom styling, CSS Grid/Flexbox, hover states, and mobile media queries.
-* **Vanilla JavaScript (ES6+):** DOM manipulation, event listeners, array methods (`push`, `splice`, `forEach`), and JSON parsing/stringifying.
+* **Vanilla JavaScript (ES6+):** DOM manipulation, event listeners, array methods, and JSON parsing/stringifying.
 * **Deployment:** Hosted live via GitHub Pages.
 
 ## Learning Outcomes
